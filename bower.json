@@ -1,0 +1,22 @@
+{
+  "name": "my_packages",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "Manuel Lema <manuel.b.lema@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "bootstrap-sass": "bootstrap-sass-official#^3.3.6"
+  }
+}
