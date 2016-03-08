@@ -1,14 +1,124 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Adrian's Portfolio</title>
-    <link rel="stylesheet" href="app/css/styles.css">
-  </head>
-  <body>
-    <h1>hello</h1>
-    <p>
-      hyey
-    </p>
-  </body>
+    <link rel="stylesheet" href="app/css/reset.css">
+    <link rel="stylesheet" href="app/css/style.css">
+</head>
+<body>
+    <!-- Main Container
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="container">
+
+        <!-- Header
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <header class="row">
+            <!-- logo -->
+            <div class="col-sm-4 logo">
+                <a href="#"><h1>company logo</h1></a>
+            </div>
+            <!-- navigation -->
+            <div class="col-sm-8 navigation">
+                <div class="links text-right">
+                    <ul>
+                        <li><a href="#">home</a></li>
+                        <li><a href="#"> | sign up | </a></li>
+                        <li><a href="#">log in</a></li>
+                    </ul>
+                </div>
+                <!-- search -->
+                <div class="search text-right">
+                    <form class="form-inline" action="index.html" method="post">
+                        <div class="form-group">
+                            <input type="text" name="name" value="">
+                            <button type="submit" class="btn btn-default">Search</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- main navigation -->
+                <nav class="main-navigation">
+                    <ul class="nav nav-tabs">
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">our services</a></li>
+                        <li><a href="#">news</a></li>
+                        <li><a href="#">contact us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Content Section
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <section class="row content-area">
+            <!-- photo area -->
+            <div class="col-sm-6">
+                <img class="img-responsive" src="https://placeimg.com/640/420/people" alt="" />
+            </div>
+            <!-- photo text -->
+            <div class="col-sm-6">
+                <h3>Company Volunteer Day 2013</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <div class="text-right">
+                <button type="button" class="btn btn-default" name="button">GET STARTED TODAY!</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <section class="news">
+            <!-- team -->
+            <div class="col-sm-5 team">
+                <div class="border">
+                    <h4>join our team!</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <a href="#">
+                        <img class="img-responsive" src="https://placeimg.com/640/250/animals" alt="" />
+                    </a>
+                </div>
+            </div>
+            <!-- latest-news -->
+            <div class="col-sm-4 latest-news">
+                <div class="border">
+                    <h4>latest news</h4>
+                    <div class="article">
+                        <strong>May 15, 2013</strong>
+                        <p>
+                            Do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        </p>
+                    </div>
+                    <div class="article">
+                        <strong>May 15, 2013</strong>
+                        <p>
+                            Do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        </p>
+                    </div>
+                    <div class="article">
+                        <strong>May 15, 2013</strong>
+                        <p>
+                            Do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- events -->
+            <div class="col-sm-3 events">
+                <h4>upcoming events</h4>
+            </div>
+        </section>
+
+    </div>
+
+
+
+    <script src="app/js/main.min.js">
+
+    </script>
+</body>
 </html>

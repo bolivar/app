@@ -1,40 +1,86 @@
-var gulp = require('gulp');
-var sass = require('gulp-ruby-sass');
-var browserSync = require('browser-sync');
-var reload = browserSync.reload;
+//////////////////////////////////////////////////////
+// Required
+//////////////////////////////////////////////////////
+var gulp = require('gulp'),
+    uglify = require('gulp-uglify'),
+    browserSync = require('browser-sync'),
+    reload = browserSync.reload,
+    plumber = require('gulp-plumber');
+    autoprefixer = require('gulp-autoprefixer');
+    // bower = require('gulp-bower');
+    notify = require("gulp-notify") ,
+    rename = require('gulp-rename');
+    sass = require('gulp-ruby-sass');
 
 var config = {
-  bowerDir: './bower_components'
+     sassPath: 'app/scss',
+     bowerDir: 'bower_components' 
 }
 
-gulp.task('css', function() { 
-    return gulp.src(config.sassPath + '/style.scss')
-         .pipe(sass({
+
+//////////////////////////////////////////////////////
+// Scripts Task
+//////////////////////////////////////////////////////
+gulp.task('scripts', function(){
+  gulp.src(['app/js/**/*.js', '!app/js/**/*.min.js'])
+  .pipe(plumber())
+  .pipe(rename({suffix:'.min'}))
+  .pipe(uglify())
+  .pipe(gulp.dest('app/js'))
+  .pipe(reload({stream:true}));
+});
+
+//////////////////////////////////////////////////////
+// Sass Task
+//////////////////////////////////////////////////////
+gulp.task('css', function(){
+  return sass(config.sassPath + '/style.sass', {
              style: 'compressed',
              loadPath: [
-                 config.bowerDir + '/bootstrap/assets/stylesheets',
-             ]
-         }) 
-            .on("error", notify.onError(function (error) {
+              'app/scss',
+              config.bowerDir + '/bootstrap-sass/assets/stylesheets',
+            ]
+         }).on("error", notify.onError(function (error) {
                  return "Error: " + error.message;
-             }))) 
-         .pipe(gulp.dest('./public/css')); 
+             })) 
+  .pipe(plumber())
+  .pipe(autoprefixer('last 2 versions'))
+  .pipe(gulp.dest('app/css'))
+  .pipe(reload({stream:true}));
 });
 
-gulp.task('sass', function() {
-  return sass('app/scss/styles.sass')
-    .pipe(gulp.dest('app/css'))
-    .pipe(reload({ stream:true }));
+
+//////////////////////////////////////////////////////
+// HTML Task
+//////////////////////////////////////////////////////
+gulp.task('html', function(){
+  gulp.src('*.html')
+  .pipe(reload({stream:true}));
 });
 
-// watch Sass files for changes, run the Sass preprocessor with the 'sass' task and reload
-gulp.task('serve', ['sass'], function() {
+//////////////////////////////////////////////////////
+// BrowserSync Task
+//////////////////////////////////////////////////////
+gulp.task('browser-sync', function(){
   browserSync({
-    server: {
-      baseDir: '../app'
+    server:{
+      baseDir: "../app"
     }
-  });
-
-  gulp.watch('app/scss/**/*', ['sass']);
-  gulp.watch('*.html');
+  })
 });
+
+
+//////////////////////////////////////////////////////
+// Watch Task
+//////////////////////////////////////////////////////
+gulp.task('watch', function(){
+  gulp.watch('app/js/**/*.js', ['scripts']);
+  gulp.watch('app/scss/**/*.sass', ['css']);
+  gulp.watch('*.html', ['html']);
+});
+
+
+//////////////////////////////////////////////////////
+// Default Task
+//////////////////////////////////////////////////////
+gulp.task('default', ['scripts', 'css', 'html', 'browser-sync', 'watch']);
